@@ -1,3 +1,7 @@
+# This repo is AI generated.
+
+Prompt: `self host convex in this folder using the self-host guide here https://docs.convex.dev/self-hosting`
+
 # Convex Self-Hosted
 
 A self-hosted [Convex](https://www.convex.dev) backend running via Docker.
