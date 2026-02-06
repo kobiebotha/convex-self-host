@@ -55,6 +55,9 @@ npx convex dev
 ## Common Commands
 
 ```bash
+# seed 2000 records
+npx convex run seed:seedLists '{"count": 2000}'
+
 # Start services in background
 docker compose up -d
 
