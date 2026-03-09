@@ -8,13 +8,27 @@
  * @module
  */
 
+import type * as auth from "../auth.js";
+import type * as http from "../http.js";
+import type * as lists from "../lists.js";
+import type * as powersync_checkpoints from "../powersync_checkpoints.js";
+import type * as seed from "../seed.js";
+import type * as todos from "../todos.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
 
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  auth: typeof auth;
+  http: typeof http;
+  lists: typeof lists;
+  powersync_checkpoints: typeof powersync_checkpoints;
+  seed: typeof seed;
+  todos: typeof todos;
+}>;
 
 /**
  * A utility for referencing Convex functions in your app's public API.

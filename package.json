@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "setup": "npx convex dev --once && node scripts/setup-env.mjs",
+    "dev": "npx convex dev",
+    "generate-stress-data": "npx tsx scripts/generate-stress-data.ts",
+    "test-batch-insert": "npx tsx scripts/test-batch-insert.ts",
+    "run-stress-test": "./scripts/run-stress-test.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "convex": "^1.31.7"
+    "@convex-dev/auth": "^0.0.91",
+    "convex": "^1.31.7",
+    "jose": "^5.9.6"
   }
 }
