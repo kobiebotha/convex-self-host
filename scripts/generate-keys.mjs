@@ -7,8 +7,8 @@
  *   node scripts/generate-keys.mjs
  *
  * Then set the output as Convex environment variables:
- *   npx convex env set POWERSYNC_JWT_PRIVATE_KEY <private_key_base64>
- *   npx convex env set POWERSYNC_JWT_PUBLIC_KEY <public_key_base64>
+ *   pnpx convex env set POWERSYNC_JWT_PRIVATE_KEY <private_key_base64>
+ *   pnpx convex env set POWERSYNC_JWT_PUBLIC_KEY <public_key_base64>
  */
 
 import { exportJWK, generateKeyPair } from "jose";
@@ -32,10 +32,10 @@ const publicB64 = Buffer.from(JSON.stringify(publicJwk)).toString("base64");
 
 console.log("=== PowerSync JWT Keys Generated ===\n");
 console.log("Set these as Convex environment variables:\n");
-console.log(`npx convex env set POWERSYNC_JWT_PRIVATE_KEY "${privateB64}"\n`);
-console.log(`npx convex env set POWERSYNC_JWT_PUBLIC_KEY "${publicB64}"\n`);
+console.log(`pnpx convex env set POWERSYNC_JWT_PRIVATE_KEY "${privateB64}"\n`);
+console.log(`pnpx convex env set POWERSYNC_JWT_PUBLIC_KEY "${publicB64}"\n`);
 console.log("Also set these:");
-console.log(`npx convex env set POWERSYNC_URL "http://localhost:8080"`);
-console.log(`npx convex env set JWT_ISSUER "convex-powersync-demo"\n`);
+console.log(`pnpx convex env set POWERSYNC_URL "http://localhost:8080"`);
+console.log(`pnpx convex env set JWT_ISSUER "convex-powersync-demo"\n`);
 console.log("Then configure your PowerSync service JWKS URL to:");
 console.log("  http://127.0.0.1:3211/auth/keys");

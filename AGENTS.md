@@ -29,15 +29,15 @@ This is a self-hosted Convex backend running locally via Docker. It provides a r
    CONVEX_SELF_HOSTED_ADMIN_KEY='<generated-key>'
    ```
 
-5. **Initialized npm project and installed Convex**:
+5. **Initialized pnpm project and installed Convex**:
    ```bash
-   npm init -y
-   npm install convex@latest
+   pnpm init
+   pnpm install convex@latest
    ```
 
 6. **Connected to self-hosted backend**:
    ```bash
-   npx convex dev --once
+   pnpx convex dev --once
    ```
 
 ## Key Information
@@ -86,10 +86,10 @@ export const list = query({
 
 ```bash
 # Watch mode (auto-push on save)
-npx convex dev
+pnpx convex dev
 
 # One-time push
-npx convex dev --once
+pnpx convex dev --once
 ```
 
 ### Schema Definition

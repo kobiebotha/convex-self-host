@@ -43,7 +43,7 @@ CONVEX_SELF_HOSTED_ADMIN_KEY='<your-admin-key>'
 ### 3. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 4. Set up Convex functions and environment
@@ -51,22 +51,16 @@ npm install
 Run the setup script to push functions and configure Convex env vars:
 
 ```bash
-npm run setup
+pnpm run setup
 ```
 
 This pushes your Convex functions and sets `JWT_PRIVATE_KEY` (a PKCS#8 PEM RSA private key required by Convex Auth). If `CONVEX_JWT_PRIVATE_KEY` is not already present in `.env.local`, the script generates one automatically and appends it.
-
-For ongoing development, use watch mode:
-
-```bash
-npm run dev
-```
 
 ## Common Commands
 
 ```bash
 # seed 2000 records
-npx convex run seed:seedLists '{"count": 2000}'
+pnpx convex run seed:seedLists '{"count": 2000}'
 
 # Start services in background
 docker compose up -d
@@ -84,13 +78,16 @@ docker compose logs -f backend
 docker compose exec backend ./generate_admin_key.sh
 
 # Push code changes (watch mode)
-npx convex dev
+pnpx convex dev
 
 # Push code once
-npx convex dev --once
+pnpx convex dev --once
+
+# For ongoing development, use watch mode:
+pnpm run dev
 
 # See all Convex CLI commands
-npx convex --help
+pnpx convex --help
 ```
 
 ## Configuration
@@ -116,7 +113,7 @@ This project uses [Convex Auth](https://labs.convex.dev/auth) with the Password 
 
 ### Required Environment Variables
 
-The following Convex deployment env var is set automatically by `npm run setup`:
+The following Convex deployment env var is set automatically by `pnpm run setup`:
 
 | Convex Env Var | Source in `.env.local` | Description |
 |---|---|---|
@@ -125,29 +122,17 @@ The following Convex deployment env var is set automatically by `npm run setup`:
 To manage Convex env vars manually:
 
 ```bash
-npx convex env set JWT_PRIVATE_KEY "<value>"
-npx convex env list
+pnpx convex env set JWT_PRIVATE_KEY "<value>"
+pnpx convex env list
 ```
 
 ## PowerSync Integration
 
-This project includes Convex HTTP actions that serve as the backend for the PowerSync demo app, eliminating the need for a separate Node.js backend.
-
-### Endpoints (served at http://127.0.0.1:3211)
-
-| Endpoint | Method | Description |
-|---|---|---|
-| `/auth/token` | GET | Returns a signed JWT for PowerSync authentication (uses Convex Auth session) |
-| `/auth/keys` | GET | JWKS endpoint for PowerSync to verify tokens |
-| `/powersync/batch` | POST | Accepts CRUD mutations from the PowerSync client SDK |
-
-### Configure PowerSync Service
-
-Point the PowerSync service's JWKS URL at the Convex HTTP action:
+This project uses Convex Auth's built-in HTTP routes (registered in `convex/http.ts`). PowerSync authenticates using Convex Auth's JWKS endpoint:
 
 ```yaml
 client_auth:
-  jwks_uri: http://127.0.0.1:3211/auth/keys
+  jwks_uri: http://127.0.0.1:3211/.well-known/jwks.json
 ```
 
 ## Project Structure
@@ -169,4 +154,3 @@ convex-self-host/
 
 - [Convex Self-Hosting Guide](https://github.com/get-convex/convex-backend/tree/main/self-hosted)
 - [Convex Documentation](https://docs.convex.dev/)
-- [Convex Discord (#self-hosted)](https://discord.gg/convex)

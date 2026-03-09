@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "npx convex dev --once && node scripts/setup-env.mjs",
-    "dev": "npx convex dev",
-    "generate-stress-data": "npx tsx scripts/generate-stress-data.ts",
-    "test-batch-insert": "npx tsx scripts/test-batch-insert.ts",
+    "setup": "pnpx convex dev --once && node scripts/setup-env.mjs",
+    "dev": "pnpx convex dev",
+    "generate-stress-data": "pnpx tsx scripts/generate-stress-data.ts",
+    "test-batch-insert": "pnpx tsx scripts/test-batch-insert.ts",
     "run-stress-test": "./scripts/run-stress-test.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

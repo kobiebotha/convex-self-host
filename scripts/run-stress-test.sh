@@ -28,19 +28,19 @@ echo "✅ Convex backend is reachable"
 # Install dependencies if needed
 if [ ! -d "node_modules" ]; then
     echo "📦 Installing dependencies..."
-    npm install
+    pnpm install
 fi
 
 # Push the latest schema
 echo "🔄 Pushing schema to Convex..."
-npx convex dev --once
+pnpx convex dev --once
 
 # Run the data generation
 echo "📊 Generating stress test data..."
 echo "This will create 1,000 lists with 10,000 todos each (1M total documents)"
 echo "This may take several minutes..."
 
-npm run generate-stress-data
+pnpm run generate-stress-data
 
 echo ""
 echo "✅ Stress test data generation completed!"

@@ -45,16 +45,16 @@ The `todos` table has been extended to include:
 
 #### Option 1: Automated Script
 ```bash
-npm run run-stress-test
+pnpm run run-stress-test
 ```
 
 #### Option 2: Manual Steps
 ```bash
 # 1. Push schema updates
-npx convex dev --once
+pnpx convex dev --once
 
 # 2. Generate test data
-npm run generate-stress-data
+pnpm run generate-stress-data
 ```
 
 ## What Gets Generated
@@ -134,7 +134,7 @@ curl $CONVEX_URL
 ### Schema Errors
 ```bash
 # Re-push schema
-npx convex dev --once
+pnpx convex dev --once
 ```
 
 ## Expected Results

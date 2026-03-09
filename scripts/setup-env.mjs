@@ -53,7 +53,7 @@ function generateJwtPrivateKey() {
 function setConvexEnv(key, value) {
   // Use spawnSync with explicit args array to avoid shell escaping issues
   // with PEM keys that contain dashes, newlines, etc.
-  const result = spawnSync("npx", ["convex", "env", "set", key, "--", value], {
+  const result = spawnSync("pnpx", ["convex", "env", "set", key, "--", value], {
     cwd: projectRoot,
     stdio: "inherit",
   });
