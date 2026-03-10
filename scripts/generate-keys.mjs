@@ -12,7 +12,7 @@
  */
 
 import { exportJWK, generateKeyPair } from "jose";
-import { randomUUID } from "crypto";
+import { randomBytes, randomUUID } from "crypto";
 
 const alg = "RS256";
 const kid = randomUUID();
@@ -30,7 +30,21 @@ publicJwk.kid = kid;
 const privateB64 = Buffer.from(JSON.stringify(privateJwk)).toString("base64");
 const publicB64 = Buffer.from(JSON.stringify(publicJwk)).toString("base64");
 
-console.log("=== PowerSync JWT Keys Generated ===\n");
+const deployKey = randomBytes(32).toString("base64url");
+
+console.log("=== PowerSync Keys Generated ===\n");
+console.log("--- Deploy Key (for powersync.yaml api.tokens) ---\n");
+console.log(deployKey);
+console.log();
+console.log("Add this to your powersync.yaml:");
+console.log(`  api:`);
+console.log(`    tokens:`);
+console.log(`      - ${deployKey}`);
+console.log();
+console.log("And in cli.yaml:");
+console.log(`  api_key: ${deployKey}`);
+console.log();
+console.log("--- JWT Keys (for Convex env vars) ---\n");
 console.log("Set these as Convex environment variables:\n");
 console.log(`pnpx convex env set POWERSYNC_JWT_PRIVATE_KEY "${privateB64}"\n`);
 console.log(`pnpx convex env set POWERSYNC_JWT_PUBLIC_KEY "${publicB64}"\n`);
